@@ -11,13 +11,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 APP_VERSION = "0.1.0"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env("SECRET_KEY", required=True)
+SECRET_KEY = "mysecretkeyandmuchmore" #get_env("SECRET_KEY", required=True)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 # This is when debug is off, else django wont allow you to visit the site
-ALLOWED_HOSTS = get_env("ALLOWED_HOSTS", required=True).split(",")
+ALLOWED_HOSTS = ["*"] #get_env("ALLOWED_HOSTS", required=True).split(",")
 
 INTERNAL_IPS = ["127.0.0.1"]
 
@@ -115,11 +115,11 @@ WSGI_APPLICATION = "pipit.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": get_env("DATABASE_NAME", required=True),
-        "USER": get_env("DATABASE_USER", required=True),
-        "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
-        "HOST": get_env("DATABASE_HOST", required=True),
-        "PORT": int(get_env("DATABASE_PORT", default="5432")),
+        "NAME": "dbcards", #get_env("DATABASE_NAME", required=True),
+        "USER": "dbuser", #get_env("DATABASE_USER", required=True),
+        "PASSWORD": "dbpsw", #get_env("DATABASE_PASSWORD", required=True),
+        "HOST": "localhost", #get_env("DATABASE_HOST", required=True),
+        "PORT": "5432", #int(get_env("DATABASE_PORT", default="5432")),
     }
 }
 
@@ -151,7 +151,7 @@ USE_TZ = True
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 
 # Email
-DEFAULT_FROM_EMAIL = get_env("DEFAULT_FROM_EMAIL", default="noreply@example.com")
+DEFAULT_FROM_EMAIL = "noreply@example.com" #get_env("DEFAULT_FROM_EMAIL", default="noreply@example.com")
 
 # Auth
 AUTH_USER_MODEL = "customuser.User"
@@ -175,7 +175,7 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 
 # Uploaded media
 MEDIA_URL = "/wt/media/"
-MEDIA_ROOT = get_env("MEDIA_PATH", required=True)
+MEDIA_ROOT = "./media" #get_env("MEDIA_PATH", required=True)
 
 
 # Static files, if in production use static root, else use static dirs
@@ -185,7 +185,7 @@ STATIC_URL = "/wt/static/"
 
 # The absolute path to the directory where collectstatic will collect static
 # files for deployment. Example: "/var/www/example.com/static/"I
-STATIC_ROOT = get_env("STATIC_PATH", required=True)
+STATIC_ROOT = "./static" #get_env("STATIC_PATH", required=True)
 
 # This setting defines the additional locations the staticfiles will traverse
 STATICFILES_DIRS = (

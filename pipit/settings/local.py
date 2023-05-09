@@ -4,7 +4,7 @@ Write local settings here, or override base settings
 from .base import *  # NOQA
 
 
-VS_CODE_REMOTE_DEBUG = get_env_bool("VS_CODE_REMOTE_DEBUG", default=False)
+VS_CODE_REMOTE_DEBUG = False #get_env_bool("VS_CODE_REMOTE_DEBUG", default=False)
 DEBUG = True
 TEMPLATES[0]["OPTIONS"]["debug"] = DEBUG  # type: ignore[index]
 
@@ -16,10 +16,11 @@ WAGTAILADMIN_BASE_URL = "https://blog.acme.com.test:8081"
 # Allow weak local passwords
 AUTH_PASSWORD_VALIDATORS = []
 
-INTERNAL_IPS = get_env("INTERNAL_IPS", default="").split(",")
+INTERNAL_IPS = "INTERNAL_IPS" #get_env("INTERNAL_IPS", default="").split(",")
 
+DEBUG_TOOLBAR = False
 # Add django debug toolbar when using local version
-if get_env_bool("DEBUG_TOOLBAR", default=False):
+if "DEBUG_TOOLBAR": #get_env_bool("DEBUG_TOOLBAR", default=False):
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
     INSTALLED_APPS += ["debug_toolbar"]
